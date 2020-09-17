@@ -22,7 +22,7 @@ Created by Lewis he on October 10, 2019.
 
 LV_FONT_DECLARE(Geometr);
 LV_FONT_DECLARE(Ubuntu);
-LV_FONT_DECLARE(DigitalPlaySt48);       // докинул свой шрифт
+LV_FONT_DECLARE(DigitalPlaySt48);   //Seve segment font
 LV_IMG_DECLARE(bg);
 LV_IMG_DECLARE(step);
 LV_IMG_DECLARE(menu);
@@ -384,7 +384,7 @@ void setupGui()
 
 
 
-    //! menu < ---------------------------------- кнопка тут ! ??? пихаем сюда свои кнопки !
+    //! menu < ---------------------------------- ???
     static lv_style_t style_pr;
 
     lv_style_init(&style_pr);
@@ -404,7 +404,7 @@ void setupGui()
     lv_obj_set_event_cb(menuBtn, event_handler);
 
 
-    //=======================================================================КНОПКИ !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // ==================== BUTTONS ====================
     static lv_style_t style_btn;
 
     /*Create a simple button style*/
@@ -451,48 +451,35 @@ void setupGui()
     lv_style_set_transition_path(&style_btn, LV_STATE_DEFAULT, &path);
 
     /*Create buttons and use the new styles*/
-    lv_obj_t * btnLeft = lv_btn_create(lv_scr_act(), NULL);     /*Add a button the current screen*/
-                  /*Set the labels text*/
-
-    lv_obj_set_pos(btnLeft, 2, 198);                            /*Set its position*/
-    lv_obj_set_size(btnLeft, 100, 35);                          /*Set its size*/
-    lv_obj_reset_style_list(btnLeft, LV_BTN_PART_MAIN);         /*Remove the styles coming from the theme*/
+    lv_obj_t * btnLeft = lv_btn_create(lv_scr_act(), NULL);    /*Add a button the current screen*/
+    lv_obj_set_pos(btnLeft, 2, 198);                           /*Set its position*/
+    lv_obj_set_size(btnLeft, 100, 35);                         /*Set its size*/
+    lv_obj_reset_style_list(btnLeft, LV_BTN_PART_MAIN);        /*Remove the styles coming from the theme*/
     lv_obj_add_style(btnLeft, LV_BTN_PART_MAIN, &style_btn);
-
-    lv_obj_t * label = lv_label_create(btnLeft, NULL);          /*Add a label to the button*/
+    lv_obj_t * label = lv_label_create(btnLeft, NULL);         /*Add a label to the button*/
     lv_label_set_text(label, "<<<");   
     
     lv_obj_set_event_cb(menuBtn, event_handler);
-// <---------------------------------------- вторая кнопка ниже
     
     /*Create buttons and use the new styles*/
-    lv_obj_t * btn2 = lv_btn_create(lv_scr_act(), NULL);     /*Add a button the current screen*/
-    lv_obj_set_pos(btn2, 138, 198);                            /*Set its position*/
-    lv_obj_set_size(btn2, 100, 35);                          /*Set its size*/
-    lv_obj_reset_style_list(btn2, LV_BTN_PART_MAIN);         /*Remove the styles coming from the theme*/
+    lv_obj_t * btn2 = lv_btn_create(lv_scr_act(), NULL);      /*Add a button the current screen*/
+    lv_obj_set_pos(btn2, 138, 198);                           /*Set its position*/
+    lv_obj_set_size(btn2, 100, 35);                           /*Set its size*/
+    lv_obj_reset_style_list(btn2, LV_BTN_PART_MAIN);          /*Remove the styles coming from the theme*/
     lv_obj_add_style(btn2, LV_BTN_PART_MAIN, &style_btn);
-
     label = lv_label_create(btn2, NULL);                      /*Add a label to the button*/
-    lv_label_set_text(label, ">>>");                     /*Set the labels text*/
-
-
-
-
-
-
+    lv_label_set_text(label, ">>>");                          /*Set the labels text*/
 
     lv_task_create(lv_update_task, 1000, LV_TASK_PRIO_LOWEST, NULL);
-    lv_task_create(lv_battery_task, 30000, LV_TASK_PRIO_LOWEST, NULL);
-
-    
+    lv_task_create(lv_battery_task, 30000, LV_TASK_PRIO_LOWEST, NULL);    
 }
 
-void updateStepCounter(uint32_t counter)    // обновляем шаги
+void updateStepCounter(uint32_t counter)
 {
     bar.setStepCounter(counter);
 }
 
-static void updateTime()                    // обновляем время
+static void updateTime()
 {
     time_t now;
     struct tm  info;
@@ -528,7 +515,6 @@ void updateBatteryIcon(lv_icon_battery_t icon)
     }
     bar.updateBatteryIcon(icon);
 }
-
 
 static void lv_update_task(struct _lv_task_t *data)
 {
