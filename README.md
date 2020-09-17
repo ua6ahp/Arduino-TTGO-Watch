@@ -6,7 +6,7 @@ All code is intended to be used with the Arduino IDE.
 Starter sample: \examples\LVGL\SimpleWatch from repository: https://github.com/Xinyuan-LilyGO/TTGO_TWatch_Library
 To set up the Arduino IDE, follow the instructions from the above repository.
 
-I prefer the seven-segment font, so I added it.
+I prefer the seven-segment font, so I added it. You can skip using it if you don't like it.
 
 Likewise, touch control performance with LVGL is not very good. Therefore, the control is transformed for greater convenience.
 
